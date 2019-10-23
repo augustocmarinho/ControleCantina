@@ -1,0 +1,57 @@
+.flash__message {
+    box-sizing: border-box;
+    padding: 15px 30px 15px 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #ccc;
+    position: relative
+}
+
+.flash__message.success {
+    color: #FFF;
+    background-color: #5CB85C;
+    border-color: #d6e9c6
+}
+
+.flash__message.warning {
+    color: #FFF;
+    background-color: #F0AD4E;
+    border-color: #faebcc
+}
+
+.flash__message.error {
+    color: #FFF;
+    background-color: #C9302C;
+    border-color: #ebccd1
+}
+
+.flash__message.info {
+    color: #FFF;
+    background-color: #5BC0DE;
+    border-color: #dfe3f0
+}
+
+.flash__close-button {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 10px;
+    margin: 0;
+    padding: 8px
+}
+
+.flash__close-button:active,
+.flash__close-button:focus {
+    outline: none
+}
