@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,8 +9,4 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    echo phpinfo();
-    // return view('welcome');
-});
+Route::get('/{any}', 'AppController@index')->where('any', '.*');
