@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories;
 
-use App\Entities\User;
+use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 

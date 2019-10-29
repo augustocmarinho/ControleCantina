@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Entities\User;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 
 class LoginRepository

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Entities\User;
+use App\Models\User;
 use App\Exceptions\SistemaException;
 use Illuminate\Http\Request;
 use Auth;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Entities\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 
@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@email.com',
             'usuario'=>'admin',
             'name'  => 'Administrador',
+            'cpf'   =>'00000000000',
             'password' => bcrypt("admin"),
         ]);
         // Roles
