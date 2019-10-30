@@ -18,8 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/teste', ['uses' => 'Api\AdsController@teste']);
-
 /** ROTAS LOGIN **/
 Route::post('/login', ['uses' => 'Auth\LoginController@login']);
 Route::post('/login/refresh', ['uses' => 'Api\LoginController@refresh']);

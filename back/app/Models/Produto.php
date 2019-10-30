@@ -10,4 +10,8 @@ class Produto extends Model
     use SoftDeletes;
 
     protected $table = 'produto';
+
+    public function estoque(){
+        return $this->hasOne(ItensEstoque::class);
+    }
 }
