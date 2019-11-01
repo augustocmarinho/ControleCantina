@@ -17,7 +17,13 @@ export default new Vuex.Store({
                 {text: 'Amber', value: 'amber'},
                 {text: 'Yellow', value: 'yellow'},
                 {text: 'Blue-grey', value: 'blue-grey'},
-            ]
+            ],
+        money: {
+            decimal: '.',
+            thousands: '',
+            precision: 2,
+            masked: false
+        }
     },
     mutations: {
         setRequest(state, n) {

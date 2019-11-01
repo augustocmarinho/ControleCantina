@@ -14,6 +14,10 @@ export default new Router({
             children: [
                 /* Home */
                 { path: 'home', alias: '', name: 'Início', component: () => import('./views/Home') },
+
+                
+                /* Produtos */
+                { path: 'produtos', alias: '', name: 'Início', component: () => import('./views/produtos/produtosListar') },
             ]
         },
         {

@@ -9,6 +9,8 @@
                 </v-list-item>
 
                 <v-divider></v-divider>
+                
+                <!-- Rota Home -->
                 <v-list-item @click="$router.push('/home')">
                     <v-list-item-action>
                         <v-icon>home</v-icon>
@@ -17,7 +19,19 @@
                         <v-list-item-title>Início</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+
+                <!-- Rota Produtos -->
+                <v-list-item @click="$router.push('/produtos')">
+                    <v-list-item-action>
+                        <v-icon>border_all</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Produtos</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
             </v-list>
+
         </v-navigation-drawer>
         <v-app-bar app color="primary" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
