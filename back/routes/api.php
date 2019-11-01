@@ -30,6 +30,15 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth:api']], function () 
     Route::post('/update', ['uses' => 'Api\UsuarioController@update']);
 });
 
+// ROTAS PRODUTOS
+Route::group(['prefix' => 'produtos', 'middleware' => ['auth:api']], function () {
+    Route::post('/create', "Api\ProdutosController@create");
+    Route::post('/update', "Api\ProdutosController@update");
+    Route::get('/get', "Api\ProdutosController@get");
+    Route::get('/getAll', "Api\ProdutosController@getAll");
+    Route::post('/delete', "Api\ProdutosController@delete");
+});
+
 Route::group(['prefix' => 'funcionarios'], function(){
     Route::get('/', 'UserController@index');
     Route::get('/{funcionario}', 'UserController@show');
