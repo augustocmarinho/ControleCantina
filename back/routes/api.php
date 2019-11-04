@@ -52,7 +52,7 @@ Route::group(['prefix' => 'funcionarios'], function(){
 Route::group(['prefix' => 'clientes', 'middleware' => ['auth:api']], function () {
     Route::post('/create', "Api\ClientesController@create");
     Route::post('/update', "Api\ClientesController@update");
-    Route::get('/get', "Api\ProdutosController@get");
+    Route::get('/get', "Api\ClientesController@get");
     Route::get('/getAll', "Api\ClientesController@getAll");
     Route::post('/delete', "Api\ClientesController@delete");
 });
