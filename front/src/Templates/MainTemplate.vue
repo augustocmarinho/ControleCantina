@@ -30,6 +30,16 @@
                     </v-list-item-content>
                 </v-list-item>
 
+                <!-- Rota Funcionários -->
+                <v-list-item @click="$router.push('/funcionarios')">
+                    <v-list-item-action>
+                        <v-icon>mdi-account-multiple</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Funcionários</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
             </v-list>
 
         </v-navigation-drawer>

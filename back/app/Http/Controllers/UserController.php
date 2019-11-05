@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\User as Funcionario;
+use App\Models\User as Funcionario;
 class UserController extends Controller
 {
     public function index()
@@ -15,7 +15,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
-        $dados['username'] = strtolower($dados['username']);
+        if(Funcionario::where('cpf', '=', $request['cpf'])->get()){
+            return response()->json(['erro' => 'CPF já cadastrado']);
+        }        
+        $dados['usuario'] = strtolower($dados['usuario']);
         $dados['password'] = bcrypt($dados['password']);
         $funcionario = Funcionario::create($dados);
         return response()->json($funcionario, 201);
@@ -34,7 +37,7 @@ class UserController extends Controller
     }
     public function search($termo)
     {
-        $funcionarios = Funcionario::whereRaw('unaccent(nome) ILIKE unaccent(\'%'.$termo.'%\')')->get();
+        $funcionarios = Funcionario::whereRaw('unaccent(name) ILIKE unaccent(\'%'.$termo.'%\')')->get();
         return response()->json($funcionarios, 200);
     }
 }
