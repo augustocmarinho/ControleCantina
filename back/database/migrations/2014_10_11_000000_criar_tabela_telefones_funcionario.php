@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaFuncionarioTelefones extends Migration
+class CriarTabelaTelefonesFuncionario extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CriarTabelaFuncionarioTelefones extends Migration
      */
     public function up()
     {
-        Schema::create('funcionario_telefones', function(Blueprint $table){
+        Schema::create('telefones_funcionario', function(Blueprint $table){
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->unsignedBigInteger('telefones_id');
-            $table->foreign('telefones_id')->references('id')->on('telefones');
+            $table->integer('telefone');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ class CriarTabelaFuncionarioTelefones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionario_telefones');
+        Schema::dropIfExists('telefones_funcionario');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClienteResponsaveisTable extends Migration
+class CriarTabelaTelefonesCliente extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateClienteResponsaveisTable extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_responsaveis', function(Blueprint $table){
-            $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
-
-            $table->string('responsavel_nome');
-            $table->primary(['cliente_id','responsavel_nome']);
-
+        Schema::create('telefones_cliente', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('clientes_id');
+            $table->foreign('clientes_id')->references('id')->on('clientes');
+            $table->integer('telefone');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +30,6 @@ class CreateClienteResponsaveisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_responsaveis');
+        Schema::dropIfExists('telefones_cliente');
     }
 }

@@ -28,7 +28,7 @@ class ProdutosController extends Controller
     }
 
     //Receber todos os produtos e estoque
-    public function getAll(Request $request){
+    public function getAll(){
         return Produto::with('estoque')->get();
     }
 

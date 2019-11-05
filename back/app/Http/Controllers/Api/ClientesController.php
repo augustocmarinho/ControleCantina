@@ -24,12 +24,12 @@ class ClientesController extends Controller
    //Receber informações de cliente, telefone, e responsaveis, filtrando por qualquer parametro (ou mais de um)
    public function get(Request $request){
     $data=$request->all();
-    return Cliente::where($data)->with('')->get();
+    return Cliente::where($data)->with('telefone')->get();
 }
 
     //Receber todos cliente, telefone, e responsaveis
-    public function getAll(Request $request){
-        return Cliente::with('')->get();
+    public function getAll(){
+        return Cliente::with('telefone')->get();
     }
 
     //Deletar cliente, filtrando por qualquer parametro (ou mais de um)

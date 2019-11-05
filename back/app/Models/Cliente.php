@@ -10,4 +10,7 @@ class Cliente extends Model
 
     protected $table = 'clientes';
 
+    public function telefone(){
+        return $this->hasMany(TelefoneCliente::class);
+    }
 }

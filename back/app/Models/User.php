@@ -83,4 +83,8 @@ class User extends Authenticatable
     {
         return $this->where('usuario', $username)->first();
     }
+
+    public function telefones(){
+        return $this->hasMany(TelefoneFuncionario::class);
+    }
 }

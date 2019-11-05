@@ -39,7 +39,7 @@ Route::group(['prefix' => 'produtos', 'middleware' => ['auth:api']], function ()
     Route::post('/delete', "Api\ProdutosController@delete");
 });
 
-Route::group(['prefix' => 'funcionarios'], function(){
+Route::group(['prefix' => 'funcionarios', 'middleware' => ['auth:api']], function(){
     Route::get('/', 'UserController@index');
     Route::get('/{funcionario}', 'UserController@show');
     Route::get('/search/{termo}', 'UserController@search');
