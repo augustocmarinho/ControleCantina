@@ -55,7 +55,12 @@
             </v-row>
             <v-row>
               <v-col>
-                <v-text-field v-model="novoFuncionario.cpf" label="CPF*" required></v-text-field>
+                <v-text-field
+                  v-model="novoFuncionario.cpf"
+                  v-mask="'###.###.###-##'"
+                  label="CPF*"
+                  required
+                ></v-text-field>
               </v-col>
               <v-col>
                 <v-text-field v-model="novoFuncionario.usuario" label="Usuário*" required></v-text-field>
@@ -110,7 +115,12 @@
             </v-row>
             <v-row>
               <v-col>
-                <v-text-field v-model="selectedFuncionario.cpf" label="CPF*" required></v-text-field>
+                <v-text-field
+                  v-model="selectedFuncionario.cpf"
+                  v-mask="'###.###.###-##'"
+                  label="CPF*"
+                  required
+                ></v-text-field>
               </v-col>
               <v-col>
                 <v-text-field v-model="selectedFuncionario.usuario" label="Usuário*" required></v-text-field>
@@ -180,7 +190,9 @@
 </template>
 
 <script>
+import { mask } from 'vue-the-mask'
 export default {
+  directives: { mask },
   data() {
     return {
       search: "",
@@ -246,7 +258,7 @@ export default {
           "error"
         );
       } else if (
-        this.novoFuncionario.cpf == 0 ||
+        this.novoFuncionario.cpf == "" ||
         this.novoFuncionario.cpf == null
       ) {
         this.$root.$emit(
@@ -303,11 +315,7 @@ export default {
             }
           })
           .catch(e => {
-            this.$root.$emit(
-              "snackbar",
-              e.response.data.erro,
-              "error"
-            );
+            this.$root.$emit("snackbar", e.response.data.erro, "error");
           });
       }
     },
@@ -326,7 +334,7 @@ export default {
           "error"
         );
       } else if (
-        this.selectedFuncionario.cpf == 0 ||
+        this.selectedFuncionario.cpf == "" ||
         this.selectedFuncionario.cpf == null
       ) {
         this.$root.$emit(
@@ -382,12 +390,8 @@ export default {
               this.dialogUpdate = false;
             }
           })
-          .catch(() => {
-            this.$root.$emit(
-              "snackbar",
-              "Erro ao conectar com o servidor",
-              "error"
-            );
+          .catch(e => {
+            this.$root.$emit("snackbar", e.response.data.erro, "error");
           });
       }
     },
