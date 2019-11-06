@@ -15,6 +15,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
+	if (strlen($dados['cpf']) != 14){
+		return response()->json(['erro' => 'CPF inválido'],500);
+	}
 	if (Funcionario::where('email', '=', $dados['email'])->exists()) {
 		return response()->json(['erro' => 'e-mail já cadastrado'],500);
 	}
@@ -32,6 +35,9 @@ class UserController extends Controller
     public function update(Request $request, Funcionario $funcionario)
     {
         $dados = $request->all();
+	if (strlen($dados['cpf']) != 14){
+		return response()->json(['erro' => 'CPF inválido'],500);
+	}
 	$func = Funcionario::where('email', '=', $dados['email'])->where('id','!=', $funcionario->id)->first();
 	if ($func !== null) {
 		return response()->json(['erro' => 'e-mail já cadastrado'],500);
