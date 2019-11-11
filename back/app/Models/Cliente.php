@@ -10,6 +10,7 @@ class Cliente extends Model
     use SoftDeletes;
 
     protected $table = 'clientes';
+    protected $fillable = ['nome', 'dataNascimento'];
 
     public function telefone(){
         return $this->hasMany(TelefoneCliente::class);

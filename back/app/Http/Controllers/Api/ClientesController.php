@@ -29,7 +29,7 @@ class ClientesController extends Controller
 
     //Receber todos cliente, telefone, e responsaveis
     public function getAll(){
-        return Cliente::with('telefone')->get();
+        return Cliente::get();
     }
 
     //Deletar cliente, filtrando por qualquer parametro (ou mais de um)

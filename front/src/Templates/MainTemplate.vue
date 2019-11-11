@@ -29,6 +29,16 @@
                         <v-list-item-title>Produtos</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                
+                <!-- Rota Clientes -->
+                <v-list-item @click="$router.push('/clientes')">
+                    <v-list-item-action>
+                        <v-icon>person</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Clientes</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
 
                 <!-- Rota Funcionários -->
                 <v-list-item @click="$router.push('/funcionarios')">

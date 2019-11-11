@@ -100,7 +100,7 @@
                         </v-btn>
 
                         <v-btn color="primary darken-1" text @click="confirmUpdate">
-                            Criar
+                            Alterar
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -215,7 +215,7 @@
                     }).then(response => {
                         if (response.status === 200) {
                             this.getProdutos();
-                            this.$root.$emit('snackbar', "Deletado com sucesso", "success");
+                            this.$root.$emit('snackbar', "Atualziado com sucesso", "success");
                             this.selectedProduto = null
                             this.dialogUpdate = false
                         }
