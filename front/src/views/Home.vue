@@ -102,8 +102,6 @@
             getUser() {
                 this.$http.get(this.$url + 'usuario/getUserCurrent').then(response => {
                     this.usuario = response.data;
-                    this.$root.$emit('snackbar', "Alert de teste, sucesso", "success");
-
                 }).catch(() => {
                     this.$root.$emit('snackbar', "Erro ao conectar com o servidor", "error");
                 })

@@ -43,7 +43,7 @@
                     <br>
                     <v-container>
                     <v-row>
-                        
+
                         <v-col cols="12" md="6">
                             <v-text-field v-model="novoCliente.nome" label="Nome*" required></v-text-field>
                         </v-col>
@@ -59,6 +59,25 @@
                             </v-menu>
                         </v-col>
 
+                        <v-col cols="12" md="6">
+                            <v-text-field v-mask="'###.###.###-##'" v-model="novoCliente.cpf" label="CPF" required></v-text-field>
+                        </v-col>
+
+                        <v-col cols="12" md="6">
+                            <v-text-field v-model="novoCliente.email" label="Email" required></v-text-field>
+                        </v-col>
+
+                        <v-col cols="12" md="6" v-for="(item,index) in novoCliente.telefones" :key="index">
+                            <v-text-field v-model="item.telefone" :label="'Telefone '+ (index+1)">
+                                <template v-slot:append>
+                                    <v-icon color="red" @click="removeTelefoneNovoCliente(index)">delete
+                                    </v-icon>
+                                </template>
+                            </v-text-field>
+                        </v-col>
+                        <v-col cols="12" md="12" align-right>
+                            <v-btn class="ma-2" @click="addTelefoneNovoCliente" tile color="primary" dark>Adicionar Telefone</v-btn>
+                        </v-col>
                     </v-row>
                     </v-container>
 
@@ -93,7 +112,7 @@
                             </v-col>
 
                             <v-col cols="12" md="6">
-                                <v-menu ref="menu" v-model="menu" :close-on-content-click="false" transition="scale-transition" offset-y full-width
+                                <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y full-width
                                     min-width="290px">
                                     <template v-slot:activator="{ on }">
                                         <v-text-field v-model="selectedCliente.dataNascimento" label="Data de Nascimento" prepend-icon="event" readonly v-on="on"></v-text-field>
@@ -101,6 +120,26 @@
                                     <v-date-picker ref="picker" v-model="selectedCliente.dataNascimento" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01"
                                         @change="save"></v-date-picker>
                                 </v-menu>
+                            </v-col>
+
+                            <v-col cols="12" md="6">
+                                <v-text-field v-mask="'###.###.###-##'" v-model="selectedCliente.cpf" label="CPF" required></v-text-field>
+                            </v-col>
+                            
+                            <v-col cols="12" md="6">
+                                <v-text-field v-model="selectedCliente.email" label="Email" required></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" v-for="(item,index) in selectedCliente.telefones" :key="index">
+                            <v-text-field v-model="item.telefone" :label="'Telefone '+ (index+1)">
+                                <template v-slot:append>
+                                    <v-icon color="red" @click="removeTelefoneUpdateCliente(index)">delete
+                                    </v-icon>
+                                </template>
+                            </v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="12" align-right>
+                                <v-btn class="ma-2" @click="addTelefoneUpdateCliente" tile color="primary" dark>Adicionar Telefone</v-btn>
                             </v-col>
 
                         </v-row>
@@ -176,7 +215,10 @@
                 dialogExcluir: false,
                 novoCliente: {
                     nome: "",
-                    dataNascimento: null
+                    dataNascimento: null,
+                    cpf:"",
+                    email:"",
+                    telefones:[]
                 },
                 dialogCreate: false,
                 dialogUpdate: false,
@@ -188,9 +230,24 @@
             this.getClientes();
         },
         methods: {
+            addTelefoneNovoCliente() {
+                this.novoCliente.telefones.push({
+                    telefone: "",
+                });
+            },
+            removeTelefoneNovoCliente(index){
+                this.novoCliente.telefones.splice(index,1);
+            },
+            addTelefoneUpdateCliente() {
+                this.selectedCliente.telefones.push({
+                    telefone: "",
+                });
+            },
+            removeTelefoneUpdateCliente(index){
+                this.selectedCliente.telefones.splice(index,1);
+            },
             getClientes() {
                 this.$http.get(this.$url + 'clientes/getAll').then(response => {
-                    // console.log(response);
                     this.clientes = response.data;
                 }).catch(() => {
                     this.$root.$emit('snackbar', "Erro ao conectar com o servidor", "error");
@@ -199,14 +256,18 @@
             create(){
                 if(this.novoCliente.nome==""||this.novoCliente.nome==null){
                     this.$root.$emit('snackbar', "Favor preencher o nome do cliente", "error");
-                } else if(this.novoCliente.dataNascimento==null){
-                    this.$root.$emit('snackbar', "Favor preencher o preço do cliente", "error");
                 } else{
                     this.$http.post(this.$url + 'clientes/create',this.novoCliente).then(response => {
                         if (response.status === 201) {
                             this.getClientes();
                             this.$root.$emit('snackbar', "Criado com sucesso", "success");
-                            this.novoCliente = { nome: "", preco: "" },
+                            this.novoCliente = {
+                                nome: "",
+                                dataNascimento: null,
+                                cpf:"",
+                                email:"",
+                                telefones:[]
+                            },
                             this.dialogCreate = false
                         }
                     }).catch(() => {
@@ -221,14 +282,8 @@
             confirmUpdate() {
                 if(this.selectedCliente.nome==""||this.selectedCliente.nome==null){
                     this.$root.$emit('snackbar', "Favor preencher o nome do cliente", "error");
-                } else if(this.selectedCliente.dataNascimento==null){
-                    this.$root.$emit('snackbar', "Favor preencher o preço do cliente", "error");
                 } else{
-                    this.$http.post(this.$url + 'clientes/update', {
-                        id: this.selectedCliente.id,
-                        nome: this.selectedCliente.nome,
-                        dataNascimento: this.selectedCliente.dataNascimento,
-                    }).then(response => {
+                    this.$http.post(this.$url + 'clientes/update', this.selectedCliente).then(response => {
                         if (response.status === 200) {
                             this.getClientes();
                             this.$root.$emit('snackbar', "Editado com sucesso", "success");
