@@ -10,13 +10,13 @@
                                 <div class="layout column align-center">
 <!--                                    <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120"/>-->
                                     <h1 class="flex my-4 primary--text">
-                                        Cantina
+                                        SCC - Dinâmico
                                     </h1>
                                 </div>
                                 <flash-message transitionIn="animated swing"></flash-message>
                                 <v-form @submit.prevent="auth">
                                     <v-text-field append-icon="person" name="login" label="Email" type="email" v-model="email" required></v-text-field>
-                                    <v-text-field append-icon="lock" name="password" label="Password" id="password" type="password" v-model="password" required></v-text-field>
+                                    <v-text-field append-icon="lock" name="password" label="Senha" id="password" type="password" v-model="password" required></v-text-field>
                                     <div class="login-btn">
                                         <v-spacer></v-spacer>
                                         <v-btn block type="submit" color="primary" :loading="finalizado">Login</v-btn>

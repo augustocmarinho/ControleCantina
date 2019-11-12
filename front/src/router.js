@@ -22,7 +22,7 @@ export default new Router({
                 { path: 'funcionarios', alias: '', name: 'Funcionários', component: () => import('./views/funcionarios/funcionarios') },
 
                 /* Produtos */
-                { path: 'clientes', alias: '', name: 'Produtos', component: () => import('./views/clientes/clientes') },
+                { path: 'clientes', alias: '', name: 'Clientes', component: () => import('./views/clientes/clientes') },
             ]
         },
         {

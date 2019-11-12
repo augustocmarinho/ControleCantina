@@ -4,7 +4,7 @@
             <v-list style="padding: 0">
                 <v-list-item style="height: 64px;background-color: #1867c0;" class="text--white">
                     <v-list-item-content>
-                        <v-list-item-title class="title" style="color: white">Cantina</v-list-item-title>
+                        <v-list-item-title class="title" style="color: white">SCC - Dinâmico</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
@@ -56,8 +56,8 @@
         <v-app-bar app color="primary" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>{{$route.name}}</v-toolbar-title>
-            <v-text-field flat solo-inverted prepend-inner-icon="search" label="Pesquisar" clearable
-                class="search pt-7 ml-8"></v-text-field>
+            <!-- <v-text-field flat solo-inverted prepend-inner-icon="search" label="Pesquisar" clearable
+                class="search pt-7 ml-8"></v-text-field> -->
             <v-spacer></v-spacer>
             
             <v-menu transition="scroll-y-transition" left bottom>
@@ -101,10 +101,10 @@
             </v-footer>
             <!--End Footer-->
         </v-content>
-        <v-overlay z-index="10" absolute :value="inRequest">
+        <!-- <v-overlay z-index="10" absolute :value="inRequest">
             <v-progress-circular :size="70" :width="7" color="white" :opacity="0.90" indeterminate>
             </v-progress-circular>
-        </v-overlay>
+        </v-overlay> -->
 
     </v-app>
 </template>

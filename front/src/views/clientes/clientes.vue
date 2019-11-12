@@ -54,7 +54,7 @@
                                 <template v-slot:activator="{ on }">
                                     <v-text-field v-model="novoCliente.dataNascimento" label="Data de Nascimento" prepend-icon="event" readonly v-on="on"></v-text-field>
                                 </template>
-                                <v-date-picker ref="picker" v-model="novoCliente.dataNascimento" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01"
+                                <v-date-picker locale="pt-br" ref="picker" v-model="novoCliente.dataNascimento" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01"
                                     @change="save"></v-date-picker>
                             </v-menu>
                         </v-col>
@@ -68,7 +68,7 @@
                         </v-col>
 
                         <v-col cols="12" md="6" v-for="(item,index) in novoCliente.telefones" :key="index">
-                            <v-text-field v-model="item.telefone" :label="'Telefone '+ (index+1)">
+                            <v-text-field  v-mask="['(##)####-####', '(##)#####-####']" v-model="item.telefone" :label="'Telefone '+ (index+1)">
                                 <template v-slot:append>
                                     <v-icon color="red" @click="removeTelefoneNovoCliente(index)">delete
                                     </v-icon>
@@ -117,7 +117,7 @@
                                     <template v-slot:activator="{ on }">
                                         <v-text-field v-model="selectedCliente.dataNascimento" label="Data de Nascimento" prepend-icon="event" readonly v-on="on"></v-text-field>
                                     </template>
-                                    <v-date-picker ref="picker" v-model="selectedCliente.dataNascimento" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01"
+                                    <v-date-picker locale="pt-br" ref="picker" v-model="selectedCliente.dataNascimento" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01"
                                         @change="save"></v-date-picker>
                                 </v-menu>
                             </v-col>
@@ -131,7 +131,7 @@
                             </v-col>
 
                             <v-col cols="12" md="6" v-for="(item,index) in selectedCliente.telefones" :key="index">
-                            <v-text-field v-model="item.telefone" :label="'Telefone '+ (index+1)">
+                            <v-text-field v-mask="['(##)####-####','(##)#####-####']" v-model="item.telefone" :label="'Telefone '+ (index+1)">
                                 <template v-slot:append>
                                     <v-icon color="red" @click="removeTelefoneUpdateCliente(index)">delete
                                     </v-icon>
@@ -193,7 +193,12 @@
 </template>
 
 <script>
+    import { mask } from 'vue-the-mask'
+
     export default {
+        directives: {
+            mask
+        },
         data() {
             return {
                 search: "",
