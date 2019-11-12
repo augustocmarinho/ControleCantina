@@ -25,7 +25,7 @@
                 >
                   <template v-slot:item.expandir="{ item }">
                     <v-icon small class="mr-2" @click="updateFuncionario(item)">edit</v-icon>
-                    <v-icon small @click="deleteFuncionario(item)">delete</v-icon>
+                    <v-icon v-if="item.id != user.id" small @click="deleteFuncionario(item)">delete</v-icon>
                   </template>
                 </v-data-table>
               </v-card>
@@ -224,12 +224,14 @@ export default {
         email: "",
         password: ""
       },
+      user: "",
       dialogCreate: false,
       dialogUpdate: false
     };
   },
   mounted() {
     this.getFuncionarios();
+    this.user = JSON.parse(localStorage.getItem("user"));
   },
   methods: {
     getFuncionarios() {
@@ -358,15 +360,6 @@ export default {
         this.$root.$emit(
           "snackbar",
           "Favor preencher o email do funcionário",
-          "error"
-        );
-      } else if (
-        this.selectedFuncionario.password == "" ||
-        this.selectedFuncionario.password == null
-      ) {
-        this.$root.$emit(
-          "snackbar",
-          "Favor preencher o senha do funcionário",
           "error"
         );
       } else if (

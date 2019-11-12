@@ -20,7 +20,10 @@ class UserController extends Controller
 	}
 	if (Funcionario::where('email', '=', $dados['email'])->exists()) {
 		return response()->json(['erro' => 'e-mail já cadastrado'],500);
-	}
+    }
+    if(!preg_match('/[a-zA-Z]*@[a-zA-Z]*.com/',$dados['email'])){
+        return response()->json(['erro' => 'e-mail inválido'],500);
+    }
 	if (Funcionario::where('cpf', '=', $dados['cpf'])->exists()) {
 		return response()->json(['erro' => 'CPF já cadastrado'],500);
 	}
@@ -41,7 +44,10 @@ class UserController extends Controller
 	$func = Funcionario::where('email', '=', $dados['email'])->where('id','!=', $funcionario->id)->first();
 	if ($func !== null) {
 		return response()->json(['erro' => 'e-mail já cadastrado'],500);
-	}
+    }
+    if(!preg_match('/[a-zA-Z]*@[a-zA-Z]*.com/',$dados['email'])){
+        return response()->json(['erro' => 'e-mail inválido'],500);
+    }
 	$func = Funcionario::where('cpf', '=', $dados['cpf'])->where('id','!=', $funcionario->id)->first();
 	if ($func !== null) {
 		return response()->json(['erro' => 'CPF já cadastrado'],500);
