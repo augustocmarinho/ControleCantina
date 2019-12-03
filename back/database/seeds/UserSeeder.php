@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@email.com',
             'usuario'=>'admin',
             'name'  => 'Administrador',
-            'cpf'   =>'00000000000',
+            'cpf'   =>'000.000.000-00',
             'password' => bcrypt("admin"),
         ]);
         // Roles
