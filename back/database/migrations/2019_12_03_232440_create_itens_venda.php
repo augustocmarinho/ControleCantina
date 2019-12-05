@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItensVendas extends Migration
+class CreateItensVenda extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateItensVendas extends Migration
             $table->bigIncrements('id');
 
             $table->bigInteger('venda_id', false, true)->nullable(false);
-            $table->foreign('venda')->references('id')->on('vendas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('venda_id')->references('id')->on('vendas')->onUpdate('CASCADE')->onDelete('CASCADE');
             
             $table->bigInteger('produto_id', false, true)->nullable(true);
             $table->foreign('produto_id')->references('id')->on('produtos')->onUpdate('CASCADE')->onDelete('CASCADE');
