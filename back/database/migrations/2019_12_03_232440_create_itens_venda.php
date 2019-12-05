@@ -25,6 +25,7 @@ class CreateItensVenda extends Migration
             $table->integer('quantidade')->nullable(false);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

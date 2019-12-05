@@ -23,6 +23,7 @@ class CreateVendas extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
