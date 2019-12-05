@@ -56,3 +56,9 @@ Route::group(['prefix' => 'clientes', 'middleware' => ['auth:api']], function ()
     Route::get('/getAll', "Api\ClientesController@getAll");
     Route::post('/delete', "Api\ClientesController@delete");
 });
+
+//ROTAS RELATÓRIOS
+Route::group(['prefix' => 'relatorios', 'middleware' => ['auth:api']], function () {
+    Route::get('/vendas', "Api\RelatoriosController@vendas");
+    Route::get('/estoque', "Api\RelatoriosController@estoque");
+});
