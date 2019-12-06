@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Vendas;
+use App\Models\ItensEstoque;
 
 class RelatoriosController extends Controller
 {
@@ -24,8 +25,28 @@ class RelatoriosController extends Controller
         return response()->json($vendas, 200);
     }
 
-    public function estoque(Request $dados){
+    public function estoque(Request $request){
+        $dados = $request->all();
 
+        if(!array_key_exists('dataInicialE', $dados)){
+            $dados['dataInicialE'] = date('Y-m-d H:i:s',0);
+        }
+
+        if(!array_key_exists('dataFinalE', $dados)){
+            $dados['dataFinalE'] = date('Y-m-d H:i:s',time());
+        }
+
+        if(!array_key_exists('dataInicialS', $dados)){
+            $dados['dataInicialS'] = date('Y-m-d H:i:s',0);
+        }
+
+        if(!array_key_exists('dataFinalS', $dados)){
+            $dados['dataFinalS'] = date('Y-m-d H:i:s',time());
+        }
+
+        $estoque = ItensEstoque::where('created_at', '>=', $dados['dataInicialE'])->where('created_at', '<=', $dados['dataFinalE'])->get();
+
+        return response()->json($estoque, 200);
     }
 }
 
