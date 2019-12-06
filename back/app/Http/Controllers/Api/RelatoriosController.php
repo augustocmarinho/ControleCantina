@@ -19,7 +19,7 @@ class RelatoriosController extends Controller
             $dados['dataFinal'] = date('Y-m-d H:i:s',time());
         }
 
-        $vendas = Vendas::where('created_at', '>=', $dados['dataInicial'])->where('created_at', '<=', $dados['dataFinal'])->get();
+        $vendas = Vendas::with('itens')->where('created_at', '>=', $dados['dataInicial'])->where('created_at', '<=', $dados['dataFinal'])->get();
 
         return response()->json($vendas, 200);
     }

@@ -13,6 +13,6 @@ class Vendas extends Model
     protected $fillable = ['id', 'clientes_id','user_id'];
 
     public function itens(){
-        return $this->hasMany(ItensVenda::class);
+        return $this->hasMany(ItensVenda::class,'venda_id');
     }
 }
