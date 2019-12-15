@@ -23,6 +23,12 @@ export default new Router({
 
                 /* Produtos */
                 { path: 'clientes', alias: '', name: 'Clientes', component: () => import('./views/clientes/clientes') },
+
+                /* Relatório de vendas */
+                { path: 'relatorio_vendas', alias: '', name: 'Relatório de vendas', component: () => import('./views/relatorios/vendas.vue') },
+
+                /* Relatório de estoque */
+                { path: 'relatorio_estoque', alias: '', name: 'Relatório de estoque', component: () => import('./views/relatorios/estoque') },
             ]
         },
         {
