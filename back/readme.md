@@ -13,12 +13,15 @@ composer install
 ```
 
 ```
-php artisan migrate:seed
+php artisan migrate
+```
+
+```
+php artisan db:seed
 ```
 
 ```
 php artisan key:generate
-```
 
 ```
 php artisan passport:install
