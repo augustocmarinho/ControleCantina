@@ -10,7 +10,7 @@
   "dependencies": {
     "@johmun/vue-tags-input": "^2.1.0",
     "@mygooder/vue-credit-card": "0.0.19",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^2.6.11",
