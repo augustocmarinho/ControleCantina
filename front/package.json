@@ -14,7 +14,7 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^2.6.11",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "v-mask": "^2.2.3",
     "v-money": "^0.8.1",
     "vue": "^2.6.12",
