@@ -28,7 +28,7 @@
     "vue2-editor": "^2.10.2",
     "vue2-google-maps": "^0.10.7",
     "vuelidate": "^0.7.5",
-    "vuetify": "^2.3.10",
+    "vuetify": "^2.6.10",
     "vuetify-credit-card": "^1.0.1",
     "vuex": "^3.5.1"
   },
